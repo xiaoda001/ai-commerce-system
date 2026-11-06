@@ -1,2 +1,12 @@
 .ppd/
 .superpowers/
+.env
+.env.*.local
+node_modules/
+.next/
+dist/
+coverage/
+*.tsbuildinfo
+npm-debug.log*
+*.log
+

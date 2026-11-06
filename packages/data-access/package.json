@@ -1,0 +1,11 @@
+{
+  "name": "@commerce/data-access",
+  "version": "1.0.0",
+  "private": true,
+  "types": "src/index.ts",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "typeorm": "^0.3.26" },
+  "peerDependencies": {
+    "typeorm": "^0.3.0"
+  }
+}

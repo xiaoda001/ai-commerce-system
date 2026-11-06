@@ -46,7 +46,8 @@
 - Workspace package names: `@commerce/api`, `@commerce/worker`, `@commerce/storefront`, `@commerce/admin`, `@commerce/contracts`, and `@commerce/data-access`.
 - Root scripts: `build`, `typecheck`, `lint`, and `test` delegate to workspaces.
 - `@commerce/contracts` exports shared market and health response types; business DTOs are added by later slices.
-- `@commerce/data-access` exports `createTypeOrmOptions(config: DatabaseConfig): TypeOrmModuleOptions` for use by API and Worker; feature entities and migrations are added by later slices.
+- `@commerce/data-access` exports `createTypeOrmOptions(config: DatabaseConfig): DataSourceOptions` for use by API and Worker; feature entities and migrations are added by later slices. Nest's `TypeOrmModuleOptions` accepts these TypeORM options structurally; verify registration compatibility in Task 2.
+- Task 1's shared data-access package provides TypeORM configuration only; it does not open database connections. The MySQL driver is a consuming-app runtime dependency: API installs `mysql2` in Task 2, and Worker installs `@nestjs/typeorm`, `typeorm`, and `mysql2` in Task 3.
 
 - [ ] **Step 1: Initialize Git and declare npm workspaces**
 
@@ -108,7 +109,7 @@ export interface DatabaseConfig {
 
 export function createTypeOrmOptions(
   config: DatabaseConfig,
-): TypeOrmModuleOptions;
+): DataSourceOptions;
 ```
 
 Return TypeORM MySQL connection options with `synchronize: false`, `migrationsRun: false`, and `entities`/`migrations` arrays supplied as empty arrays until feature slices add them. `packages/data-access/src/index.ts` exports the interface and function.
@@ -218,7 +219,7 @@ git commit -m "feat: add dependency readiness health checks"
 Install the Worker runtime and test dependencies:
 
 ```powershell
-npm install --workspace @commerce/worker @nestjs/common @nestjs/core ioredis kafkajs
+npm install --workspace @commerce/worker @nestjs/common @nestjs/core @nestjs/typeorm typeorm mysql2 ioredis kafkajs
 npm install --workspace @commerce/worker --save-dev jest ts-jest @types/jest
 ```
 
