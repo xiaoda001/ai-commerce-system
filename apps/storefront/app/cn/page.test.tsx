@@ -6,6 +6,7 @@ describe('China market route', () => {
   it('renders a market shell for the CN link destination', () => {
     render(<ChinaPage />);
 
-    expect(screen.getByRole('heading', { name: /China/i })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: /好物/i })).toBeTruthy();
+    expect(screen.getByRole('link', { name: /登录/i }).getAttribute('href')).toBe('/cn/login');
   });
 });

@@ -15,6 +15,14 @@ An npm-workspaces monorepo for the commerce platform.
 
 Run `npm install` once from the repository root. Copy `.env.example` to the ignored root `.env` and replace `DB_PASSWORD` with a local development password. Start MySQL, Redis, and Kafka using the host addresses documented in [Local services](docs/development/local-services.md).
 
+For the first API setup, apply the database migration:
+
+```sh
+npm run db:migrate --workspace @commerce/api
+```
+
+Temporarily set `BOOTSTRAP_ADMIN_EMAIL` and `BOOTSTRAP_ADMIN_PASSWORD` in the ignored root `.env`, then run `npm run admin:bootstrap --workspace @commerce/api`. The command creates a `super_admin` with access to both US and CN markets and refuses to reuse an existing admin email. Remove both one-time variables from `.env` and restart the API after it succeeds so Casbin loads the new policies. Admin APIs require `X-Market: US` or `X-Market: CN`; writes must match that authorized market.
+
 Start each application in its own terminal from the repository root:
 
 ```sh

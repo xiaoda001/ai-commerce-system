@@ -1,4 +1,4 @@
-import { ConfigProvider } from 'antd';
+import { App as AntApp, ConfigProvider } from 'antd';
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import { apiBaseUrl } from './config';
@@ -11,6 +11,6 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <ConfigProvider>
-    <App apiBaseUrl={apiBaseUrl} />
+    <AntApp><App apiBaseUrl={apiBaseUrl} /></AntApp>
   </ConfigProvider>,
 );

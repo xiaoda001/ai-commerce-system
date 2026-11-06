@@ -5,7 +5,7 @@
 | 顺序 | 计划 | 独立交付 |
 | --- | --- | --- |
 | 0 | [平台骨架与基础设施连通](2026-11-06-platform-bootstrap.md) | monorepo 前后台/API/Worker 骨架；NestJS 健康检查能验证 MySQL、Redis、Kafka |
-| 1 | 登录、Session 与 Casbin RBAC | 顾客/管理员登录、市场范围校验、后台账号角色管理 |
+| 1 | [登录、Session 与 Casbin RBAC](2026-11-06-auth-session-rbac.md) | 顾客/管理员邮箱密码登录；Redis Session；Casbin 市场授权；首位管理员初始化与后台角色管理 |
 | 2 | 商品目录、SKU、市场配置与媒体 | 商品后台 CRUD、双市场文案/价格/库存、图片上传与 URL、顾客商品浏览 |
 | 3 | 购物车、订单、站内钱包与财务看板 | 模拟充值、钱包支付/退款、库存预留、订单履约、收入/成本/毛利 |
 | 4 | 秒杀与 Redis Stream | Lua 原子限购、配额预占、Worker 幂等建单、超时释放与并发验证 |
