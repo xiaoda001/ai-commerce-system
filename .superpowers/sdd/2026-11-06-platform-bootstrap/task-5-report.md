@@ -19,4 +19,4 @@ The successful reruns establish that the initial `spawn EPERM` failures were san
 
 ## Commit
 
-Pending.
+`b1061e9 docs: document local commerce development setup`

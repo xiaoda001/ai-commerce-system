@@ -10,6 +10,8 @@
     "test": "jest --runInBand"
   },
   "dependencies": {
+    "@commerce/contracts": "file:../../packages/contracts",
+    "@commerce/data-access": "file:../../packages/data-access",
     "@nestjs/common": "^11.2.8",
     "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.2.8",
