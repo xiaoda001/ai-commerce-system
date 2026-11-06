@@ -1,5 +1,33 @@
 {
   "name": "@commerce/admin",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "antd": "^6.7.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "eslint": "^10.14.0",
+    "jsdom": "^29.1.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
+  },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 3002",
+    "build": "tsc --noEmit -p tsconfig.json && vite build",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint src vite.config.ts vitest.config.ts",
+    "test": "vitest run"
+  }
 }
